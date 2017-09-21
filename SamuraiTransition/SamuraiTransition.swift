@@ -89,7 +89,15 @@ extension SamuraiTransition: UIViewControllerAnimatedTransitioning {
                 if Device.isSimulator {
                     return fromView.snapshotView(rect: $0.inSideFrame, afterScreenUpdate: false)!
                 }
-                return fromView.resizableSnapshotView(from: $0.inSideFrame, afterScreenUpdates: false, withCapInsets: .zero)!
+                
+                if let snapshotView = fromView.resizableSnapshotView(from: $0.inSideFrame, afterScreenUpdates: false, withCapInsets: .zero) {
+                    return snapshotView
+                } else {
+                    let view = UIView()
+                    view.backgroundColor = UIColor(red:0.24, green:0.70, blue:0.67, alpha:1.00)
+                    view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    return view
+                }
             }
             
             zip(zanViews, samuraiConfig.zanViewConfigList).forEach { (view, config) in
