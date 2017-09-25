@@ -44,8 +44,8 @@ extension CircleZanConfig {
     
     fileprivate func circleAreaPath() -> UIBezierPath {
         let path = UIBezierPath()
-        let startAngle = -CGFloat(M_PI_2)
-        let endAngle = CGFloat(M_PI) + CGFloat(M_PI_2)
+        let startAngle = -CGFloat(CGFloat.pi / 2)
+        let endAngle = CGFloat(CGFloat.pi / 2) + CGFloat(CGFloat.pi / 2)
         path.addArc(withCenter: zanPoint, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return path
     }
